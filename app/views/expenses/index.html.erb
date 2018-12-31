@@ -1,0 +1,21 @@
+<h1>Expenses made Today</h1>
+<p><%= link_to "Add an expense",new_expense_path %></p>
+<table>
+	<tr>
+		<th>Expense</th>
+		<th>Amount</th>
+		<th>Date</th>
+	</tr>
+<% @expenses.each do |f| %>
+	<tr>
+		<td><%= f.expense_name %>
+		</td>
+		<td><%= f.amount %>
+		</td>
+		<td> <%= f.date.to_s(:long) %>
+		</td>
+		<td> <%= link_to "Edit" , edit_expense_path(f) %> </td>
+		<td> <%= link_to "Delete" , expense_path(f), method: :delete, data: {confirm: 'Are You Sure?'}  %> </td>
+	</tr>
+	<% end %>
+</table>
