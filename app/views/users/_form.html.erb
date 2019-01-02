@@ -1,0 +1,25 @@
+ <% if @user.errors.any? %>
+<% @user.errors.full_messages.each do |msg| %>
+<ul>
+  <li><%= msg%></li>
+</ul>
+<% end %>
+<% end %>
+<%= form_for @user do |f| %>
+	<div class = "field">
+		<%= f.label :name %><br>
+		<%= f.text_field :name , placeholder: "enter username" %>
+	</div>
+	<div class = "field">
+		<%= f.label :email %><br>
+		<%= f.email_field :email, placeholder: "enter email"%>
+	</div>
+	<div class = "field">
+		<%= f.label :password  %><br>
+		<%= f.password_field :password, placeholder: "Enter password" %>
+	</div>
+	<div class="action">
+  	<%= f.submit (@user.new_record? ? "Sign up" : "Update") %>
+	</div>
+<%=  link_to "Back", expenses_path %> 
+<% end %>

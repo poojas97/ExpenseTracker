@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :expenses
 
   resources :categories, except: [:destroy]
+  get 'signup', to: 'users#new' 
+  resources :users, except: [:new]
 
 
 
