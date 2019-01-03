@@ -1,10 +1,4 @@
-<% if @expense.errors.any? %>
-<% @expense.errors.full_messages.each do |msg| %>
-<ul>
-  <li><%= msg%></li>
-</ul>
-<% end %>
-<% end %>
+<%= render 'shared/errors', obj:@expense %>
 
 <div class = "row">
 	<div class="col-xs-12">

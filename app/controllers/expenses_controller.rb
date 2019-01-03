@@ -15,7 +15,7 @@
  		@expense = Expense.new(expense_params)
       @expense.user = User.first
       	if	@expense.save
-      	  flash[:notice] = "Expense is added successfully"
+      	  flash[:success] = "Expense is added successfully"
  		  redirect_to expense_path(@expense)
  	    else
  		  render 'new'
@@ -30,7 +30,7 @@
    def update
    	@expense = Expense.find(params[:id])
       	if	@expense.update(expense_params)
-      	  flash[:notice] = "Expense is updated successfully"
+      	  flash[:success] = "Expense is updated successfully"
  		  redirect_to expense_path(@expense)
  	    else
  		  render 'edit'
@@ -41,7 +41,7 @@
    def destroy
    		@expense = Expense.find(params[:id])
    		@expense.destroy
-   		flash[:notice] = "Expense was deleted"
+   		flash[:danger] = "Expense was deleted"
    		redirect_to expenses_path
    end
 
