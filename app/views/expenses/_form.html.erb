@@ -6,22 +6,39 @@
 <% end %>
 <% end %>
 
-
-<%= form_for @expense do |f| %>
-	<div class = "field">
-		<%= f.label :expense_name %><br>
-		<%= f.text_field :expense_name %>
+<div class = "row">
+	<div class="col-xs-12">
+		<%= form_for(@expense, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		 <div class="form-group">
+			<div class = "col-sm-2 control-label">
+			<%= f.label :expense_name %></div>
+			<div class="col-sm-8">
+			<%= f.text_field :expense_name, class: "form-control" %>
+	       </div>
+	    </div>
+<div class="form-group">
+		<div class = "col-sm-2 control-label">
+		<%= f.label :amount %></div>
+		<div class="col-sm-8">
+		<%= f.text_field :amount,class: "form-control"%>
 	</div>
-	<div class = "field">
-		<%= f.label :amount %><br>
-		<%= f.text_field :amount%>
-	</div>
-	<div class = "field">
-		<%= f.label :Date  %><br>
-		<%= f.text_field :date, placeholder: "dd/mm/yyyy" %>
-	</div>
-<div class="action">
-  <%= f.submit %>
 </div>
-<%=  link_to "Back", expenses_path %> 
+<div class="form-group">
+		<div class = "col-sm-2 control-label">
+		<%= f.label :Date  %>
+	    </div>
+	    <div class="col-sm-8">
+		<%= f.text_field :date, placeholder: "dd/mm/yyyy",class: "form-control" %>
+		</div>
+	</div>
+<div class="form-group">
+<div  align="center">
+  <%= f.submit class: 'btn btn-lg btn-color'  %>
+</div>
+</div>
+<div class="col-xs-4 col-xs-offset-4" align="center">
+[<%=  link_to "Back", expenses_path %>]
+</div> 
 <% end %>
+</div>
+</div>
