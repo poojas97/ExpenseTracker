@@ -46,7 +46,7 @@ $navbar-default-bg: #338433 ;
 	font-weight: bold;
 	font-size: 1.7em;
 }
-.btn:hover {
+.hovering:hover {
 	background-color: #424443;
 	border-color: #4CAF50;
 	border:1px;
@@ -61,4 +61,30 @@ footer {
 	border-top: 1px solid #eaeaea;
 	color: #777;
 }
+.article-actions {
+   border-top: 1px solid #eaeaea;
+   padding-top: 5px;
 
+}
+
+.tdname,.tdamt {
+  border-bottom: 1px solid #ddd;
+  padding:10px 50px 5px 50px;
+}
+.tddel,.tdedit{
+	 border-bottom: 1px solid #ddd;
+  padding-left: 5px;
+}
+
+#exptable
+{
+   font-family: Rockwell Extra Bold,Rockwell Bold,monospace;;
+	padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  
+  /*color: white;*/
+}
+#exptable tr:nth-child(even){background-color: #f2f2f2;}
+
+#exptable tr:hover {background-color: #ddd;}

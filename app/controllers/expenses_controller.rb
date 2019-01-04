@@ -53,7 +53,7 @@
 
  	
 		def expense_params
-			params.require(:expense).permit(:expense_name,:amount,:date)
+			params.require(:expense).permit(:expense_name,:amount,:date,:category)
 		end
 
 end

@@ -26,8 +26,22 @@
 		</div>
 	</div>
 <div class="form-group">
+		<div class = "col-sm-2 control-label">
+		<%= f.label :Category %>
+	    </div>
+	    <div class="col-sm-8">
+		<%= f.text_field :category, placeholder: "Specify the category",class: "form-control" %>
+		</div>
+	</div>
+
+
+
+
+
+
+<div class="form-group">
 <div  align="center">
-  <%= f.submit class: 'btn btn-lg btn-color'  %>
+  <%= f.submit class: 'btn btn-lg btn-color hovering'  %>
 </div>
 </div>
 <div class="col-xs-4 col-xs-offset-4" align="center">

@@ -2,6 +2,7 @@ require "date"
 
 class Expense <ActiveRecord::Base
    belongs_to :user
+   belomgs_to :category
 	validates :expense_name, presence: true, length: { minimum: 3, maximum: 50} 
 	validates :amount, presence: true
     # validates_date :date, presence: true, on_or_before: lambda { Date.current }
@@ -9,6 +10,7 @@ class Expense <ActiveRecord::Base
     # validates  :date , date: true
     validates_date :date, :on_or_before => lambda { Date.today}
   validates :user_id, presence: true
+  validates :category, presence: true, length: { minimum: 3, maximum: 20} 
   #   validate :happened_at_is_valid_datetime
 
   # def happened_at_is_valid_datetime
