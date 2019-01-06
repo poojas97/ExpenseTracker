@@ -1,25 +1,54 @@
- <% if @user.errors.any? %>
-<% @user.errors.full_messages.each do |msg| %>
-<ul>
-  <li><%= msg%></li>
-</ul>
+ <%= render 'shared/errors', obj: @user %>
+<div class='row'>
+<div class='col-xs-12'>
+<%= form_for(@user, :remote => true, :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+	<div class="form-group">
+	<div class="control-label col-sm-2">
+		<%= f.label :username %>
+	</div>
+	<div class="col-sm-8">
+		<%= f.text_field :name, class: "form-control", placeholder: "Enter username", autofocus: true %>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-label col-sm-2">
+		<%= f.label :email %>
+	</div>
+	<div class="col-sm-8">
+		<%= f.email_field :email, class: "form-control", placeholder: "Enter email" %>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-label col-sm-2">
+		<%= f.label :password %>
+	</div>
+	<div class="col-sm-8">
+		<%= f.password_field :password, class: "form-control", placeholder: "Enter password" %>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+  	<%= f.submit (@user.new_record? ? "Sign up" : "Update",class: 'btn btn-primary btn-lg') %>
+	</div>
+	</div>
 <% end %>
-<% end %>
-<%= form_for @user do |f| %>
-	<div class = "field">
-		<%= f.label :name %><br>
-		<%= f.text_field :name , placeholder: "enter username" %>
-	</div>
-	<div class = "field">
-		<%= f.label :email %><br>
-		<%= f.email_field :email, placeholder: "enter email"%>
-	</div>
-	<div class = "field">
-		<%= f.label :password  %><br>
-		<%= f.password_field :password, placeholder: "Enter password" %>
-	</div>
-	<div class="action">
-  	<%= f.submit (@user.new_record? ? "Sign up" : "Update") %>
-	</div>
-<%=  link_to "Back", expenses_path %> 
-<% end %>
+[<%=  link_to "Back", expenses_path %>] 
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

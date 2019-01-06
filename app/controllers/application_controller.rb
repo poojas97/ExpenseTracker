@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
 
 
-protect_from_forgery with: :exception
+protect_from_forgery prepend: true, with: :exception
+# protect_from_forgery with: :exception, prepend: true
 
 helper_method :current_user, :logged_in?
 

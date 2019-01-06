@@ -1,7 +1,10 @@
  class ExpensesController < ApplicationController
- 	def index
+ 	before_action :require_user
+   before_action :require_same_user, only: [:edit, :update, :destroy, :show]
+
+   def index
  		#@expenses = Expense.all
- 		 @expenses = Expense.where(date: Date.today)
+ 		 @expenses = Expense.where(date: Date.today, user_id: current_user)
     
  	end
  	def new
@@ -13,7 +16,7 @@
  	def create
  		#render plain: params[:expense].inspect
  		@expense = Expense.new(expense_params)
-      @expense.user = User.first
+      @expense.user = current_user
       	if	@expense.save
       	  flash[:success] = "Expense is added successfully"
  		  redirect_to expense_path(@expense)
@@ -48,7 +51,13 @@
    def month
        @expenses = Expense.where("date > ? AND date < ?", Time.now.beginning_of_month, Time.now.end_of_month)
    end
-
+   def require_same_user
+      # @expense = Expense.find(params[:id])
+      if current_user != User.where(@expense)
+         flash[:danger] = "You can only delete or update your expenses"
+         redirect_to root_path
+      end
+   end
 
 
  	

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :expenses
+	# has_many :categories
 	validates :name,presence: true, uniqueness: { case_sensitive: false },
 	length: {minimum: 3, maximum: 50}
 

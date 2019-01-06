@@ -75,15 +75,33 @@ footer {
 	 border-bottom: 1px solid #ddd;
   padding-left: 5px;
 }
+.total
+{
+	font-weight: bold;
+	font-size: 1.7em;
+}
+.headingrow,.headdef{
+	background-color: green;
+	padding:10px 50px 5px 50px;
+	 font-weight: bold;
+}
 
 #exptable
 {
-   font-family: Rockwell Extra Bold,Rockwell Bold,monospace;;
+   font-family: Rockwell Extra Bold,Rockwell Bold,monospace;
 	padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
+ 
   
   /*color: white;*/
+}
+.navi
+{
+ color: #000;
+}
+.navi:hover {
+	font-weight: bold;
 }
 #exptable tr:nth-child(even){background-color: #f2f2f2;}
 
