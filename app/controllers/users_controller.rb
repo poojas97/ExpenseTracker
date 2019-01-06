@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:edit, :update, :show]
-	before_action :require_same_user, only: [:edit, :update, :destroy,:show]
+	# before_action :require_same_user, only: [:edit, :update, :destroy,:show]
 def new
 	@user = User.new
 end
@@ -11,6 +11,7 @@ end
 def create
 	@user = User.new(user_params)
 	if @user.save
+		session[:user_id] = @user.id
 		flash[:success]="WELCOME #{@user.name}"
 		redirect_to expenses_path
 	else

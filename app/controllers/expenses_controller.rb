@@ -52,8 +52,8 @@
        @expenses = Expense.where("date > ? AND date < ?", Time.now.beginning_of_month, Time.now.end_of_month)
    end
    def require_same_user
-      # @expense = Expense.find(params[:id])
-      if current_user != User.where(@expense)
+      @expense = Expense.find(params[:id])
+      if current_user != @expense.user
          flash[:danger] = "You can only delete or update your expenses"
          redirect_to root_path
       end
