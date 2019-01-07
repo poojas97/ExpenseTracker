@@ -3,7 +3,9 @@
 
 <h4><strong> Amount spent:</strong></h4><hr> <%= @expense.amount %>
 <h4><strong> Date:</strong></h4><hr> <%= @expense.date %>
-<h4><strong> Category:</strong></h4><hr> <%= @expense.category %>
+
+
+<h4><strong> Category:</strong></h4><hr> <%= @expense.category.category_name if @expense.category %>
 <div class="article-actions">
 <%= link_to "Edit", edit_expense_path(@expense), class: "btn btn-xs btn-primary" %>
 

@@ -100,9 +100,16 @@ footer {
 {
  color: #000;
 }
+/*.navbar, .nav
+{
+	color: #000;
+}*/
 .navi:hover {
 	font-weight: bold;
 }
 #exptable tr:nth-child(even){background-color: #f2f2f2;}
 
 #exptable tr:hover {background-color: #ddd;}
+.nav.navbar-nav.navbar-right li a {
+    color: black;
+}

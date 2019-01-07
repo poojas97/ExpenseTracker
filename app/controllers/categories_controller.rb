@@ -36,8 +36,9 @@ end
  	end
 
 def show
-
-enddef category_params
+    @category = Category.find(params[:id])
+end
+def category_params
 			params.require(:category).permit(:category_name)
 		end
 

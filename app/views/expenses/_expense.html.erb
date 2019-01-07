@@ -22,7 +22,7 @@
 		</td>
 		<td class="tdamt"><%= f.amount %>
 		</td>
-		<td class="tdamt"><%= f.category %>
+		<td class="tdamt"><%= f.category.category_name if f.category %>
 		</td>
 		<!-- <td> <%= f.date.to_s(:long) %> -->
 		</td>

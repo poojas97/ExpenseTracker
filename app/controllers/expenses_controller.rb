@@ -17,6 +17,7 @@
  		#render plain: params[:expense].inspect
  		@expense = Expense.new(expense_params)
       @expense.user = current_user
+      # @expense.category.to_s
       	if	@expense.save
       	  flash[:success] = "Expense is added successfully"
  		  redirect_to expense_path(@expense)
@@ -62,7 +63,7 @@
 
  	
 		def expense_params
-			params.require(:expense).permit(:expense_name,:amount,:date,:category)
+			params.require(:expense).permit(:expense_name,:amount,:date,:category_id)
 		end
 
 end

@@ -33,7 +33,9 @@
 
       <p>
 
-      <span class="subtext" style="margin-left: 55px">by <%=h Expense.where("date = ?",date) %></span>
+      <span class="subtext" style="margin-left: 55px">by <%= Expense.where("date = ?",date) %></span>
     </p>
 
 <%  end # end for items_each%>
+<% @ expenses.each do |item|
+	

@@ -25,15 +25,25 @@
 		<%= f.text_field :date, placeholder: "dd/mm/yyyy",class: "form-control" %>
 		</div>
 	</div>
-<div class="form-group">
+
+  
+
+
+
+
+
+
+	 
+ <div class="form-group">
 		<div class = "col-sm-2 control-label">
 		<%= f.label :Category %>
 	    </div>
 	    <div class="col-sm-8">
-		<%= f.text_field :category, placeholder: "Specify the category",class: "form-control" %>
+	    	 <%= f.collection_select(:category_id, Category.all , :id , :category_name) %>
+	
 		</div>
 	</div>
-
+ 
 
 
 

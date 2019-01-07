@@ -12,11 +12,11 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navi" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navi">
+    <div class="collapse navbar-collapse bg-light navbar-light" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navi navbar-light">
         <li><a href="#">Link <span class="sr-only navi">(current)</span></a></li>
          <% if logged_in? %>
-        <li class="navi"> <%= link_to "Today's expenses", expenses_path %></li>
+        <li class="nav-inverse navi"> <%= link_to "Today's expenses", expenses_path %></li>
         <% end %>
         <li><a href="#">Link</a></li>
         <li class="dropdown">
@@ -31,6 +31,24 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" color= "black" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "All Categories", categories_path %></li>
+            <% Category.all.each do |category| %>
+            <li><%= link_to "#{category.category_name}", category_path(category) %></li>
+            <% end %>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Create New Category", new_category_path %></li>
+          </ul>
+        </li>
+        <% end %>
+
+
+
+
+
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
