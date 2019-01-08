@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -12,18 +12,18 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse bg-light navbar-light" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navi navbar-light">
         <li><a href="#">Link <span class="sr-only navi">(current)</span></a></li>
          <% if logged_in? %>
-        <li class="nav-inverse navi"> <%= link_to "Today's expenses", expenses_path %></li>
+        <li class="navi"> <%= link_to "Today's expenses", expenses_path, id: "navi" %></li>
         <% end %>
-        <li><a href="#">Link</a></li>
+        <li><a href="#" id= "navi">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><a href="#"><%= link_to "Today", expenses_path%></a></li>
+            <li><a href="#"><%= link_to "This month",expenses_month_path %></a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
@@ -33,10 +33,11 @@
         </li>
         <% if logged_in? %>
         <li class="dropdown">
-          <a href="#" color= "black" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+          <a href="#" color= "black" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id= "navi">Categories<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "All Categories", categories_path %></li>
-            <% Category.all.each do |category| %>
+            <% @categories= Category.where(user_id: current_user) %>
+            <% @categories.each do |category| %>
             <li><%= link_to "#{category.category_name}", category_path(category) %></li>
             <% end %>
             <li role="separator" class="divider"></li>
@@ -44,11 +45,6 @@
           </ul>
         </li>
         <% end %>
-
-
-
-
-
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -58,9 +54,9 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-        <li><a href="#">Link</a></li>
+        <li><a href="#" id= "navi">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id = "navi"><%= current_user.name %><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Edit your profile", edit_user_path(current_user) %></li>
             <li><%= link_to "View your profile", user_path(current_user) %></li>
@@ -72,8 +68,8 @@
           </ul>
         </li>
         <% else %>
-            <li><%= link_to 'Log in', login_path %></li>
-            <li><%= link_to 'Sign up', signup_path %></li>
+            <li><%= link_to 'Log in', login_path,id: "navi" %></li>
+            <li><%= link_to 'Sign up', signup_path, id: "navi" %></li>
         <% end %>
 
 

@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
 def index
-	@category= Category.all
+	@categories= Category.where(user_id: current_user)
 end
   def edit
    		@category = Category.find(params[:id])
@@ -9,6 +9,7 @@ end
  	def create
  		#render plain: params[:category].inspect
  		@category = Category.new(category_params)
+    @category.user = current_user
      
       	if	@category.save
       	  flash[:success] = "category is added successfully"

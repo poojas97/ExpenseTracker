@@ -92,19 +92,25 @@ footer {
 	padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
- 
-  
-  /*color: white;*/
 }
-.navi
+.listing {
+  list-style: none;
+  padding-left: 0;
+}
+#navi
 {
- color: #000;
+ color: black;
+ font-size: 1.5em;
 }
-/*.navbar, .nav
+.category-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+a
 {
 	color: #000;
-}*/
-.navi:hover {
+}
+#navi:hover {
 	font-weight: bold;
 }
 #exptable tr:nth-child(even){background-color: #f2f2f2;}
@@ -112,4 +118,7 @@ footer {
 #exptable tr:hover {background-color: #ddd;}
 .nav.navbar-nav.navbar-right li a {
     color: black;
+}
+.btn {
+	font-weight: bold;
 }

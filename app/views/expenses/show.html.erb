@@ -1,12 +1,14 @@
 <h1 align = "center"><%= @expense.expense_name %></h1>
-<div class ="well col-md-6">
+<div class="col-lg-6 col-lg-offset-3">
+<div align = "center" class ="well">
 
-<h4><strong> Amount spent:</strong></h4><hr> <%= @expense.amount %>
-<h4><strong> Date:</strong></h4><hr> <%= @expense.date %>
+<h4><strong> Amount spent:</strong> <%= @expense.amount %><br/><br/>
+<h4><strong> Date:</strong> <%= @expense.date.to_s(:long) %><br/><br/>
 
 
-<h4><strong> Category:</strong></h4><hr> <%= @expense.category.category_name if @expense.category %>
+<h4><strong> Category:</strong> <%= @expense.category.category_name if @expense.category %><br/><br/>
 <div class="article-actions">
+	<br/>
 <%= link_to "Edit", edit_expense_path(@expense), class: "btn btn-xs btn-primary" %>
 
 <%= link_to "Delete", expense_path(@expense), method: :delete,

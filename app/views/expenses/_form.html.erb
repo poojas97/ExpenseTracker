@@ -22,24 +22,16 @@
 		<%= f.label :Date  %>
 	    </div>
 	    <div class="col-sm-8">
-		<%= f.text_field :date, placeholder: "dd/mm/yyyy",class: "form-control" %>
+		<%= f.date_select :date,:start_year => Date.current.year, :end_year => 2000, order: [:day, :month, :year],class: "form-control" %>
 		</div>
 	</div>
-
-  
-
-
-
-
-
-
-	 
- <div class="form-group">
+    <div class="form-group">
 		<div class = "col-sm-2 control-label">
 		<%= f.label :Category %>
 	    </div>
 	    <div class="col-sm-8">
-	    	 <%= f.collection_select(:category_id, Category.all , :id , :category_name) %>
+	    	  <% @categories= Category.where(user_id: current_user) %>
+	    	 <%= f.collection_select(:category_id, @categories , :id , :category_name , {class: "dropdown-menu"})%>
 	
 		</div>
 	</div>

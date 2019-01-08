@@ -40,7 +40,7 @@ class: "btn btn-xs btn-danger" %> </td>
 <div class ="well total">
 <p> Total expenditure today : <%= Expense.where(date: Date.today,user_id: current_user).sum(:amount) %></p> </div><br/>
 </div>
-<p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-xs btn-primary" %></p>
+<p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %></p>
 </div>
 </div>
 </div>
