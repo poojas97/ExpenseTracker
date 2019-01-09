@@ -1,53 +1,44 @@
-<h1 align="center">Expenses made in <%= Date::MONTHNAMES[Date.today.month] %> : <%= Expense.where("date > ? AND date < ?", Time.now.beginning_of_month, Time.now.end_of_month).sum(:amount) %></h1>
+<h1 align="center">Expenses made in <%= Date::MONTHNAMES[Date.today.month] %> : <%= Expense.where("date > ? AND date < ? AND user_id = ?", Time.now.beginning_of_month, Time.now.end_of_month, current_user).sum(:amount) %></h1>
+	<% @expense = @expenses.group_by {|t| t.date} %>
+		<%@expense.each do |d,e| %>
 
+			<div class ="row">
+				<div class="col-xs-8 col-xs-offset-2">
+					<div class ="well well-lg">
+						<div style="background: #81BEF7;margin-top: 5px; margin-bottom: 5px;" class="rounded">
+							<b>
+							<span style="padding: 5px"><%= d.to_s(:long) %></span>
+							<span style=" float:right;padding-right: 5px ">Expenditure: <%= Expense.where(date: d, user_id: current_user).sum(:amount)%></span>
+							</b>
+						</div>
+						<br/>
+						<div class="expenselist">
+							<table align="center" id ="exptable">	
+									<tr class="headingrow">
+										<th class ="headdef">Expense</th>
+										<th class= "headdef">Amount</th>
+										<th class= "headdef">Category</th>
+										
+									</tr>
+								<% for t in e %>
+									<tr>
+										<td class="tdname"><%= t.expense_name %></td>
+										<td class="tdamt"><%= t. amount %></td>
+										<td class="tdamt"> <%=t.category.category_name if t.category %></td> 
+									</tr>
+								<% end %>
+							</table>
+							<br/>
+						</div>
+						<div class ="well">
+							<p><strong>Total expenditure this month : <%= Expense.where(date: d, user_id: current_user).sum(:amount) %></strong></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
 
- 
-
-
-
-
-<% @task = @expenses.group_by {|t| t.date} %>
-<%@task.each do |d,e| %>
-
-<div class ="row">
-	<div class="col-xs-8 col-xs-offset-2">
-		<div class ="well well-lg">
-			<div style="background: #81BEF7;margin-top: 5px; margin-bottom: 5px;" class="rounded">
-				<b>
-				<span style="padding: 5px"><%= d.to_s(:long) %></span>
-				<span style=" float:right;padding-right: 5px ">Expenditure: <%= Expense.where(date: d).sum(:amount)%></span>
-				</b>
-			 </div>
-			 <br/>
-		<div class="expenselist">
-	   <table align="center" id ="exptable">	
-
-	<tr class="headingrow">
-		<th class ="headdef">Expense</th>
-		<th class= "headdef">Amount</th>
-		<th class= "headdef">Category</th>
 		
-	</tr>
-<% for t in e %>
-  <tr>
- 	<td class="tdname"><%= t.expense_name %></td>
- 	<td class="tdamt"><%= t. amount %></td>
- 	<td class="tdamt"> <%=t.category.category_name if t.category %></td> 
-  </tr>
- <% end %>
-</table>
-<br/>
-</div>
-<div class ="well">
- <p>Total expenditure this month : <%= Expense.where(date: d).sum(:amount) %></p>
-</div>
-</div>
-</div>
-</div>
-
-<% end %>
-
-	
 
 
-	
+		

@@ -1,48 +1,42 @@
 <h1 align="center">Expenses made Today(<%= Date.today.to_s(:long) %>)</h1>
-
 <br/>
-<div class ="row">
-	<div class="col-xs-8 col-xs-offset-2">
-		<div class ="well well-lg">
-		<div class="expenselist">
-	   <table align="center" id ="exptable">	
+	<div class ="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<div class ="well well-lg">
+				<div class="expenselist">
+				<table align="center" id ="exptable">	
+					<tr class="headingrow">
+						<th class ="headdef">Expense</th>
+						<th class= "headdef">Amount</th>
+						<th class= "headdef">Category</th>
+						<th></th>
+						<th></th>
+					</tr>
 
-	<tr class="headingrow">
-		<th class ="headdef">Expense</th>
-		<th class= "headdef">Amount</th>
-		<th class= "headdef">Category</th>
-		<th></th>
-		<th></th>
-	</tr>
+					<% obj.each do |f| %>
 
-<% obj.each do |f| %>
-
-	<tr>
-		<td class="tdname"><%= f.expense_name %>
-		</td>
-		<td class="tdamt"><%= f.amount %>
-		</td>
-		<td class="tdamt"><%= f.category.category_name if f.category %>
-		</td>
-		<!-- <td> <%= f.date.to_s(:long) %> -->
-		</td>
-		<td class="tdedit"> <%= link_to "Edit", edit_expense_path(f), class: "btn btn-xs btn-primary" %> </td>
-		<td class="tddel"> <%= link_to "Delete", expense_path(f), method: :delete,
-
-data: { confirm: "Are you sure you want to delete the expense?"},
-
-class: "btn btn-xs btn-danger" %> </td>
-	<% end %>
-
-</table>
-<br/>
-<hr>
-<div class ="well total">
-<p> Total expenditure today : <%= Expense.where(date: Date.today,user_id: current_user).sum(:amount) %></p> </div><br/>
-</div>
-<p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %></p>
-</div>
-</div>
-</div>
+						<tr>
+							<td class="tdname"><%= f.expense_name %></td>
+							<td class="tdamt"><%= f.amount %></td>
+							<td class="tdamt"><%= f.category.category_name if f.category %></td>
+							<!-- <td> <%= f.date.to_s(:long) %> -->
+							<td class="tdedit"> <%= link_to "Edit", edit_expense_path(f), class: "btn btn-xs btn-primary" %></td>
+							<td class="tddel"> <%= link_to "Delete", expense_path(f), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %> </td>
+						</tr>	
+					
+					<% end %>
+				</table>
+				<br/>
+				<hr>
+				<div class ="well total">
+					<p> Total expenditure today : <%= Expense.where(date: Date.today,user_id: current_user).sum(:amount) %></p> 
+				</div>
+				<br/>
+				</div>
+				<p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %>
+				</p>
+			</div>
+		</div>
+	</div>
 
 
