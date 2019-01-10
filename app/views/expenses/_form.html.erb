@@ -1,14 +1,14 @@
-<%= render 'shared/errors', obj:@expense %>
-
+<%= render 'shared/errors', obj: @expense %>
 <div class = "row">
 	<div class="col-xs-12">
-		<%= form_for(@expense,:remote => true, :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<%= form_for( @expense , :remote => true, :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+	
 			<div class="form-group">
 				<div class = "col-sm-2 control-label">
 					<%= f.label :expense_name %>
 				</div>
 				<div class="col-sm-8">
-					<%= f.text_field :expense_name, class: "form-control",placeholder: "Enter the expense name" %>
+					<%= f.text_field :name, class: "form-control",placeholder: "Enter the expense name" %>
 				</div>
 			</div>
 			<div class="form-group">
@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-sm-8">
 						<% @categories= Category.where(user_id: current_user) %>
-						<%= f.collection_select(:category_id, @categories , :id , :category_name , {class: "dropdown-menu"})%>
+						<%= f.collection_select(:category_id, @categories , :id , :name , {class: "dropdown-menu"})%>
 				</div>
 			</div>
 		 

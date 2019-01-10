@@ -62,7 +62,7 @@ footer {
 	border-top: 1px solid #eaeaea;
 	color: #777;
 }
-.article-actions {
+.expense-actions {
    border-top: 1px solid #eaeaea;
    padding-top: 5px;
 
@@ -87,7 +87,7 @@ footer {
 	 font-weight: bold;
 }
 
-#exptable
+.exptable
 {
    font-family: Rockwell Extra Bold,Rockwell Bold,monospace;
 	padding-top: 12px;
@@ -114,12 +114,17 @@ a
 #navi:hover {
 	font-weight: bold;
 }
-#exptable tr:nth-child(even){background-color: #f2f2f2;}
+.exptable tr:nth-child(even){background-color: #f2f2f2;}
 
-#exptable tr:hover {background-color: #ddd;}
+.exptable tr:hover {background-color: #ddd;}
 .nav.navbar-nav.navbar-right li a {
     color: black;
 }
 .btn {
 	font-weight: bold;
+}
+.datedisplay {
+	background: #81BEF7;
+	margin-top: 5px; 
+	margin-bottom: 5px; 
 }

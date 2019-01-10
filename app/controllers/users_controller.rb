@@ -12,8 +12,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user.id
-			flash[:success]="WELCOME #{@user.name}"
-			redirect_to expenses_path
+			redirect_to expenses_path, :flash => { :success => "WELCOME #{@user.name}"} 
 		else
 			render 'new'
 		end	
@@ -26,8 +25,7 @@ class UsersController < ApplicationController
 	def update
 		
 		if @user.update(user_params)
-			flash[:success] = "Your details were updated successfully"
-			redirect_to expenses_path
+			redirect_to expenses_path, :flash => { :success => "Your details were updated successfully"} 
 		else
 			render 'edit'
 		end
@@ -42,11 +40,8 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def require_same_user
-		if current_user != @user
-			flash[:danger] = "You can only edit your own account"
-			redirect_to root_path
-		end
+	def require_same_user		
+		redirect_to root_path, :flash => {:danger => "You can only edit your own account" } if current_user != @user
 	end
 		
 	def user_params

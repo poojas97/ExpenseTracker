@@ -18,8 +18,8 @@
 		@expense.user = current_user
 		
 		if @expense.save
-				flash[:success] = "Expense is added successfully"
-				redirect_to expense_path(@expense)
+				# flash[:success] = "Expense is added successfully"
+				redirect_to expense_path(@expense), :flash => { :success => "Expense is added successfully"} 
 		else
 				render 'new'
 		end
@@ -33,8 +33,7 @@
 	def update
 		@expense = Expense.find(params[:id])
 			if @expense.update(expense_params)
-				flash[:success] = "Expense is updated successfully"
-				redirect_to expense_path(@expense)
+				redirect_to expense_path(@expense), :flash => {:success => "Expense is updated successfully" }
 		 	else
 				render 'edit'
 			end
@@ -43,8 +42,8 @@
 	def destroy
 			@expense = Expense.find(params[:id])
 			@expense.destroy
-			flash[:danger] = "Expense was deleted"
-			redirect_to expenses_path
+			
+			redirect_to expenses_path, :flash => {:danger => "Expense was deleted" }
 	end
 
 	def month
@@ -55,16 +54,14 @@
 	end
 	def require_same_user
 		@expense = Expense.find(params[:id])
-		if current_user != @expense.user
-			flash[:danger] = "You can only delete or update your expenses"
-			redirect_to root_path
-		end
+		redirect_to root_path, :flash => {:danger => "You can only delete or update your expenses" } if current_user != @expense.user
+		
 	end
 
 
 	
 		def expense_params
-			params.require(:expense).permit(:expense_name,:amount,:date,:category_id)
+			params.require(:expense).permit(:name,:amount,:date,:category_id)
 		end
 
 end

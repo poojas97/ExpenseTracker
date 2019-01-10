@@ -17,8 +17,9 @@
 				<li><a href="#">Link <span class="sr-only navi">(current)</span></a></li>
 				 <% if logged_in? %>
 				<li class="navi"> <%= link_to "Add an expense", new_expense_path, id: "navi" %></li>
-				<% end %>
+				
 				<!-- <li><a href="#" id= "navi">Link</a></li> -->
+
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id= "navi">Report<span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -31,6 +32,7 @@
 						<li><a href="#">One more separated link</a></li>
 					</ul>
 				</li>
+				<% end %>
 				<% if logged_in? %>
 				<li class="dropdown">
 					<a href="#" color= "black" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id= "navi">Categories<span class="caret"></span></a>
@@ -38,7 +40,7 @@
 						<li><%= link_to "All Categories", categories_path %></li>
 						<% @categories= Category.where(user_id: current_user) %>
 						<% @categories.each do |category| %>
-						<li><%= link_to "#{category.category_name}", category_path(category) %></li>
+						<li><%= link_to "#{category.name}", category_path(category) %></li>
 						<% end %>
 						<li role="separator" class="divider"></li>
 						<li><%= link_to "Create New Category", new_category_path %></li>

@@ -4,7 +4,7 @@
 		<div class="col-xs-8 col-xs-offset-2">
 			<div class ="well well-lg">
 				<div class="expenselist">
-				<table align="center" id ="exptable">	
+				<table align="center" class ="exptable">	
 					<tr class="headingrow">
 						<th class ="headdef">Expense</th>
 						<th class= "headdef">Amount</th>
@@ -16,9 +16,9 @@
 					<% obj.each do |f| %>
 
 						<tr>
-							<td class="tdname"><%= f.expense_name %></td>
+							<td class="tdname"><%= f.name %></td>
 							<td class="tdamt"><%= f.amount %></td>
-							<td class="tdamt"><%= f.category.category_name if f.category %></td>
+							<td class="tdamt"><%= f.category.name if f.category %></td>
 							<!-- <td> <%= f.date.to_s(:long) %> -->
 							<td class="tdedit"> <%= link_to "Edit", edit_expense_path(f), class: "btn btn-xs btn-primary" %></td>
 							<td class="tddel"> <%= link_to "Delete", expense_path(f), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %> </td>
