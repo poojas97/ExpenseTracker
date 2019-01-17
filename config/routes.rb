@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 	root 'welcome#home'
 	get '/expenses/year' => 'expenses#year'
 	get '/expenses/month' => 'expenses#month'
+	
 	resources :expenses
-
+	resources :recurring_expenses
 	resources :categories, except: [:destroy]
 	get 'signup', to: 'users#new' 
 	resources :users, except: [:new]

@@ -21,7 +21,10 @@
 				# flash[:success] = "Expense is added successfully"
 				redirect_to expense_path(@expense), :flash => { :success => "Expense is added successfully"} 
 		else
-				render 'new'
+				# render '/shared/errors' , obj: @expense
+				# redirect_to new_expense_path
+
+				 render action: :new
 		end
 	end
 
@@ -52,6 +55,13 @@
 	def year
 		@expenses = Expense.where("date > ? AND date < ? AND user_id = ?", Time.now.beginning_of_year, Time.now.end_of_year, current_user)
 	end
+	# def see_expense
+	# 	@expenses = Expense.where(user_id: current_user)
+	# end
+	
+
+
+
 	def require_same_user
 		@expense = Expense.find(params[:id])
 		redirect_to root_path, :flash => {:danger => "You can only delete or update your expenses" } if current_user != @expense.user
