@@ -21,9 +21,9 @@
 							<% @sum = 0 %>
 							<% for t in e %>
 									<tr>
-										<td class="tdname"><%= t.expense_name %></td>
+										<td class="tdname"><%= t.name %></td>
 										<td class="tdamt"><%= t. amount %></td>
-										<td class="tdamt"> <%=t.category.category_name if t.category %></td> 
+										<td class="tdamt"> <%=t.category.name if t.category %></td> 
 										<td class="tdamt"> <%=t.date.to_s(:short) %></td>
 										<% @sum = @sum + t.amount %>
 									</tr>

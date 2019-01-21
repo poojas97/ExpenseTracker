@@ -13,12 +13,10 @@ class RecurringExpensesController < ApplicationController
 		@rec_expense.user = current_user
 		
 		if @rec_expense.save
-				# flash[:success] = "Expense is added successfully"
+				
 				redirect_to recurring_expense_path(@rec_expense), :flash => { :success => "Expense is added successfully"} 
 		else
-				# render '/shared/errors' , obj: @expense
-				# redirect_to new_expense_path
-
+				
 				 render action: :new
 		end
 	end

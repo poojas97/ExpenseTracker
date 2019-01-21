@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 	
 	resources :expenses
 	resources :recurring_expenses
-	resources :categories, except: [:destroy]
+	resources :categories, except: [:edit]
 	get 'signup', to: 'users#new' 
 	resources :users, except: [:new]
 	get 'login', to:'sessions#new'
