@@ -1,40 +1,36 @@
  class ExpensesController < ApplicationController
 	before_action :require_user
 	before_action :require_same_user, only: [:edit, :update, :destroy, :show]
+	before_action :set_value , only: [:edit, :show, :update, :destroy]
 
 	def index
-		#@expenses = Expense.all
 		@expenses = Expense.where(date: Date.today, user_id: current_user)
 	end
 	def new
 		@expense = Expense.new
 	end
 	def edit
-		@expense = Expense.find(params[:id])
+		
 	end
 	def create
-		#render plain: params[:expense].inspect
 		@expense = Expense.new(expense_params)
 		@expense.user = current_user
 		
 		if @expense.save
-				# flash[:success] = "Expense is added successfully"
 				redirect_to expense_path(@expense), :flash => { :success => "Expense is added successfully"} 
 		else
-				# render '/shared/errors' , obj: @expense
 				# redirect_to new_expense_path
-
 				 render action: :new
 		end
 	end
 
 	def show
-		@expense = Expense.find(params[:id])
+		
 	end
 
  
 	def update
-		@expense = Expense.find(params[:id])
+		
 			if @expense.update(expense_params)
 				redirect_to expense_path(@expense), :flash => {:success => "Expense is updated successfully" }
 		 	else
@@ -43,10 +39,8 @@
 	end
 
 	def destroy
-			@expense = Expense.find(params[:id])
-			@expense.destroy
-			
-			redirect_to expenses_path, :flash => {:danger => "Expense was deleted" }
+		@expense.destroy
+		redirect_to expenses_path, :flash => {:danger => "Expense was deleted" }
 	end
 
 	def month
@@ -55,10 +49,10 @@
 	def year
 		@expenses = Expense.where("date > ? AND date < ? AND user_id = ?", Time.now.beginning_of_year, Time.now.end_of_year, current_user)
 	end
-	# def see_expense
-	# 	@expenses = Expense.where(user_id: current_user)
-	# end
 	
+	def set_value
+		@expense = Expense.find(params[:id])
+	end
 
 
 
