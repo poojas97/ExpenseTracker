@@ -1,4 +1,4 @@
-$navbar-default-bg: #338433 ;
+$navbar-default-bg: #166cb7 ;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -40,8 +40,8 @@ $navbar-default-bg: #338433 ;
 }
 
 .btn-color{
-	background-color: #4CAF50;
-	border-color: #4CAF50;
+	background-color: #166cb7;
+	border-color: #166cb7;
 	border-radius: 50px;
 	color: #e5e8e6;
 	font-weight: bold;
@@ -49,9 +49,9 @@ $navbar-default-bg: #338433 ;
 }
 .hovering:hover {
 	background-color: #424443;
-	border-color: #4CAF50;
+	border-color: #166cb7;
 	border:1px;
-	color: #4CAF50;
+	color: #166cb7;
 	font-weight: bold;
 	font-size: 1.7em;
 }
@@ -82,14 +82,13 @@ footer {
 	font-size: 1.7em;
 }
 .headingrow,.headdef{
-	background-color: green;
+	background-color: #166cb7;
 	padding:10px 50px 5px 50px;
 	 font-weight: bold;
 }
-
 .exptable
 {
-   font-family: Rockwell Extra Bold,Rockwell Bold,monospace;
+   font-family: Rockwell Extra Bold,Rockwell Bold, monospace;
 	padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -129,7 +128,7 @@ a
 	margin-bottom: 5px; 
 }
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: #166cb7;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -167,3 +166,40 @@ a
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+.modal-body {
+    position: relative;
+    max-height: 400px;
+    padding: 15px;
+}
+#duration,#Category {
+    border: 1px solid #166cb7;
+    outline-color: #166cb7;
+    margin: 5px;
+    padding: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #166cb7;
+	border-color: #166cb7;
+	border-radius: 50px;
+	color: #e5e8e6;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+
+.text
+{
+	font-weight: bold;
+	font-size: 1.7em;
+}
+
+.modal-dialog {
+          width: 360px;
+        }
+ 
+.modal-header {
+    background-color: #166cb7;
+	padding:16px 16px;
+    color:#FFF;
+    border-bottom:2px dashed #166cb7;
+ }

@@ -1,0 +1,45 @@
+<% if @expense_with_duration.empty? %>
+ <h4>No records to display</h4>
+<% else %>
+<h1 align="center">Expenses made</h1>
+    <div class ="row">
+        <div class="col-xs-8 col-xs-offset-2">
+          <div class ="well well-lg">
+            <div class="expenselist">
+            <table align="center" class ="exptable">  
+              <tr class="headingrow">
+                <th class ="headdef">Expense</th>
+                <th class= "headdef">Amount</th>
+                <th class= "headdef">Category</th>
+                <th class= "headdef">Date</th>
+
+                <th colspan="2"></th>
+              </tr>
+
+              <% @expense_with_duration.each do |f| %>
+
+                <tr>
+                  <td class="tdname"><%= f.name %></td>
+                  <td class="tdamt"><%= f.amount %></td>
+                  <td class="tdamt"><%= f.category.name if f.category %></td>
+                  <td class="tdamt"> <%= f.date.to_s(:short) %>
+                  <td class="tdedit"> <%= link_to "Edit", edit_expense_path(f), class: "btn btn-xs btn-primary" %></td>
+                  <td class="tddel"> <%= link_to "Delete", expense_path(f), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %> </td>
+                </tr> 
+              
+              <% end %>
+            </table>
+            <br/>
+            <hr>
+            <div class ="well total">
+              <p> Total expenditure  : <%= @sum %></p> 
+            </div>
+            <br/>
+            </div>
+            <p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %>
+            </p>
+          </div>
+        </div>
+        <br/>
+      </div>
+      <%end%>

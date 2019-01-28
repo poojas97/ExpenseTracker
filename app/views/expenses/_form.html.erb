@@ -1,50 +1,50 @@
-<%= render 'shared/errors', obj: @expense %>
+<%= render 'shared/errors', obj: @items %>
 <div class = "row">
-	<div class="col-xs-12">
-		<%= form_for( @expense , :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-	
-			<div class="form-group">
-				<div class = "col-sm-2 control-label">
-					<%= f.label :expense_name %>
-				</div>
-				<div class="col-sm-8">
-					<%= f.text_field :name, class: "form-control",placeholder: "Enter the expense name" %>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class = "col-sm-2 control-label">
-					<%= f.label :amount %>		
-				</div>
-				<div class="col-sm-8">
-					<%= f.text_field :amount,class: "form-control", placeholder: "Enter the amount spent"%>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class = "col-sm-2 control-label">
-					<%= f.label :Date  %>
-				</div>
-				<div class="col-sm-8">
-					<%= f.date_select :date,:start_year => Date.current.year, :end_year => 2000, order: [:day, :month, :year],class: "form-control" %>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class = "col-sm-2 control-label">
-				<%= f.label :Category %>
-				</div>
-				<div class="col-sm-8">
-						<% @categories= Category.where(user_id: current_user) %>
-						<%= f.collection_select(:category_id, @categories , :id , :name , {class: "dropdown-menu"})%>
-				</div>
-			</div>
-		 
-			<div class="form-group">
-				<div  align="center">
-					<%= f.submit class: 'btn btn-lg btn-color hovering'  %>
-				</div>
-			</div>
-			<div class="col-xs-4 col-xs-offset-4" align="center">
-				[<%=  link_to "Back", expenses_path %>]
-			</div> 
-		<% end %>
-	</div>
+  <div class="col-xs-12">
+    <%= form_for( @items , :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+  
+      <div class="form-group">
+        <div class = "col-sm-2 control-label">
+          <%= f.label :expense_name %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :name, class: "form-control",placeholder: "Enter the expense name" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class = "col-sm-2 control-label">
+          <%= f.label :amount %>    
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :amount,class: "form-control", placeholder: "Enter the amount spent"%>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class = "col-sm-2 control-label">
+          <%= f.label :Date  %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.date_select :date,:start_year => Date.current.year, :end_year => 2000, order: [:day, :month, :year],class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class = "col-sm-2 control-label">
+        <%= f.label :Category %>
+        </div>
+        <div class="col-sm-8">
+            <% @categories= Category.where(user_id: current_user) %>
+            <%= f.collection_select(:category_id, @categories , :id , :name , {class: "dropdown-menu"})%>
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <div  align="center">
+          <%= f.submit class: 'btn btn-lg btn-color hovering'  %>
+        </div>
+      </div>
+      <div class="col-xs-4 col-xs-offset-4" align="center">
+        [<%=  link_to "Back", expenses_path %>]
+      </div> 
+    <% end %>
+  </div>
 </div>

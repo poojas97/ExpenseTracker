@@ -1,11 +1,11 @@
-<h1 align ="center"> Welcome <%= @user.name %></h1>
+<h1 align ="center"> Welcome <%= current_user.name %></h1>
 <br/>
-	<div class ="row">
-		<div align = "center" class ="col-md-8 col-md-offset-6 center">
-			<%= gravatar_for @user, size: 150 %>
-		</div>
-	</div>
-	<br/>
-	<br/>
-	<!-- <h4 align = "center"><%= @user.name %>'s expenses</h4> -->
+  <div class ="row">
+    <div align = "center" class ="col-md-8 col-md-offset-6 center">
+      <%= gravatar_for current_user, size: 150 %>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  
 <p align = "center" class="col-md-8 col-md-offset-6 center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %></p>

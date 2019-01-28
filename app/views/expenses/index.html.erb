@@ -1,1 +1,8 @@
 <%= render 'expense', obj: @expenses %>
+
+  <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  </div>
+
+  <div class= "btn btn-primary" "> 
+      <%= link_to 'Add Category', new_release_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+  </div>

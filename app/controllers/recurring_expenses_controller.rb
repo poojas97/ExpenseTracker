@@ -8,7 +8,6 @@ class RecurringExpensesController < ApplicationController
 	end
 
 	def create
-		#render plain: params[:expense].inspect
 		@rec_expense = RecurringExpense.new(expense_params)
 		@rec_expense.user = current_user
 		

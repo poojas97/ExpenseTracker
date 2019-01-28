@@ -1,42 +1,98 @@
-<h1 align="center">Expenses made Today(<%= Date.today.to_s(:long) %>)</h1>
-<br/>
-	<div class ="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<div class ="well well-lg">
-				<div class="expenselist">
-				<table align="center" class ="exptable">	
-					<tr class="headingrow">
-						<th class ="headdef">Expense</th>
-						<th class= "headdef">Amount</th>
-						<th class= "headdef">Category</th>
-						<th></th>
-						<th></th>
-					</tr>
+<div>
+    <div class="form-group">
+        <div class = "col-sm-4 control-label text">
+            Select the category: 
+        </div>
+        <div class="col-sm-6">
+            <% @categories= Category.where(user_id: current_user) %>
+            <%= select_tag "Category", options_for_select(@categories.collect{ |u| [u.name, u.id] } + [["all","0"]],"0") %>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="form-group">
+        <div class = "col-sm-4 control-label text">
+          Select the duration: 
+        </div>
+        <div class="col-sm-6"> 
+            <%= select_tag "duration", options_for_select([ "Today", "This month","This year" ], "Today") %>
+        </div>
+    </div>
+</div>
+<br/><br/>
 
-					<% obj.each do |f| %>
+<div id="row_dim">
 
-						<tr>
-							<td class="tdname"><%= f.name %></td>
-							<td class="tdamt"><%= f.amount %></td>
-							<td class="tdamt"><%= f.category.name if f.category %></td>
-							<!-- <td> <%= f.date.to_s(:long) %> -->
-							<td class="tdedit"> <%= link_to "Edit", edit_expense_path(f), class: "btn btn-xs btn-primary" %></td>
-							<td class="tddel"> <%= link_to "Delete", expense_path(f), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %> </td>
-						</tr>	
-					
-					<% end %>
-				</table>
-				<br/>
-				<hr>
-				<div class ="well total">
-					<p> Total expenditure today : <%= Expense.where(date: Date.today,user_id: current_user).sum(:amount) %></p> 
-				</div>
-				<br/>
-				</div>
-				<p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %>
-				</p>
-			</div>
-		</div>
-	</div>
+  <h1 align="center">Expenses made Today(<%= Date.today.to_s(:long) %>)</h1>
+  <br/>
+    <div class ="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class ="well well-lg">
+          <% if obj.empty? %>
+              <h4>No expenses made today</h4>
+          <% else %> 
+              <div class="expenselist">
+                <table align="center" class ="exptable">  
+                  <tr class="headingrow">
+                    <th class ="headdef">Expense</th>
+                    <th class= "headdef">Amount</th>
+                    <th class= "headdef">Category</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+
+                  <% obj.each do |f| %>
+
+                    <tr>
+                      <td class="tdname"><%= f.name %></td>
+                      <td class="tdamt"><%= f.amount %></td>
+                      <td class="tdamt"><%= f.category.name if f.category %></td>
+                      <!-- <td> <%= f.date.to_s(:long) %> -->
+                      <td class="tdedit"> <%= link_to "Edit", edit_expense_path(f), class: "btn btn-xs btn-primary" %></td>
+                      <td class="tddel"> <%= link_to "Delete", expense_path(f), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %> </td>
+                    </tr> 
+                  <% end %>
+                </table>
+                    <br/>
+                    <hr>
+                    <div class ="well total">
+                        <p> Total expenditure today : <%= Expense.where(date: Date.today,user_id: current_user).sum(:amount) %></p> 
+                    </div>
+                     <br/>
+              </div>
+          <% end %>
+          <p align = "center"><%= link_to "Add an expense",new_expense_path, class: "btn btn-primary" %></p>
+        </div>
+      </div>
+      <br/>
+    </div>
+  </div>
+    <div class="result-div" id="result_div">
+        </div>
+<script>
+   $(document).ready(function() {
+    $('#Category').change(function() {
+      $('#row_dim').hide(); 
+        $.ajax({
+           url: "<%= update_expense_list_path %>",
+           data: {
+               c_name: this.value,
+               d_name: $("#duration option:selected").text()
+           },
+           dataType: "script"
+        });
+    });
+    $('#duration').change(function() {
+      $('#row_dim').hide(); 
+        $.ajax({
+           url: "<%= update_expense_list_path %>",
+           data: {
+               c_name: $("#Category").val(),
+               d_name:  this.value
+           },
+           dataType: "script"
+        });
+    });
+   });
+</script>
 
 

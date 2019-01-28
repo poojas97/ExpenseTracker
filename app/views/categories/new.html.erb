@@ -1,22 +1,2 @@
-<h1 align="center">Create new category</h1>
-	<%= render 'shared/errors', obj: @category %>
-	<br><br/>
-	<%= form_for(@category, :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-		<div class="form-group">
-			<div align="center"class="control-label col-sm-4">
-				<%= f.label :name %>
-			</div>
-			<div class="col-xs-4">
-				<%= f.text_field :name, class: "form-control", placeholder: "Category name", autofocus: true%>
-			</div>
-		</div>
-		<div class="form-group">
-			<div align ="center" class=" col-xs-12">
-				<%= f.submit class: 'btn btn-primary' %>
-			</div>
-		</div>
-	<% end %>
-
-	<div align ="center"class="col-xs-12">
-		[ <%= link_to "Back", expenses_path %> ]
-	</div>
+<h1 align="center">New Category</h1>
+<%= render 'form'%>
