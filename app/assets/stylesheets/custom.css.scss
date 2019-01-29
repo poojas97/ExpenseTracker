@@ -2,65 +2,68 @@ $navbar-default-bg: #166cb7 ;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+body
+{
+  background-color: #cfeefc;
+}
 .logo
 {
-	float : left;
-	font-size: 1.7em;
-	text-transform: uppercase;
-	letter-spacing: -1px;
-	font-weight: bold;
-	color: #000;
-	margin:10px;
+  float : left;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+  color: #000;
+  margin:10px;
 
 }
 
 .logo:hover {
-	color: #fff;
-	text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 .center {
-	text-align: center;
-	align-content: center;
-	margin-left: 18%
+  text-align: center;
+  align-content: center;
+  margin-left: 18%
 }
 
 .jumbotron
 {
-	align-content:  center;
-	background-image: asset-url('imh.jpeg');
-	/*background-size: cover;*/
-	background-repeat: false;
-	width : 60%;
+  align-content:  center;
+  background-image: asset-url('imh.jpeg');
+  /*background-size: cover;*/
+  background-repeat: false;
+  width : 60%;
 }
 
 .jumbotron h1 {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .btn-color{
-	background-color: #166cb7;
-	border-color: #166cb7;
-	border-radius: 50px;
-	color: #e5e8e6;
-	font-weight: bold;
-	font-size: 1.7em;
+  background-color: #166cb7;
+  border-color: #166cb7;
+  border-radius: 50px;
+  color: #e5e8e6;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 .hovering:hover {
-	background-color: #424443;
-	border-color: #166cb7;
-	border:1px;
-	color: #166cb7;
-	font-weight: bold;
-	font-size: 1.7em;
+  background-color: #424443;
+  border-color: #166cb7;
+  border:1px;
+  color: #166cb7;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 
 footer {
-	margin-top: 45px;
-	padding-top: 5px;
-	border-top: 1px solid #eaeaea;
-	color: #777;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
 }
 .expense-actions {
    border-top: 1px solid #eaeaea;
@@ -73,23 +76,23 @@ footer {
   padding:10px 50px 5px 50px;
 }
 .tddel,.tdedit{
-	 border-bottom: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
   padding-left: 5px;
 }
 .total
 {
-	font-weight: bold;
-	font-size: 1.7em;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 .headingrow,.headdef{
-	background-color: #166cb7;
-	padding:10px 50px 5px 50px;
-	 font-weight: bold;
+  background-color: #166cb7;
+  padding:10px 50px 5px 50px;
+   font-weight: bold;
 }
 .exptable
 {
    font-family: Rockwell Extra Bold,Rockwell Bold, monospace;
-	padding-top: 12px;
+  padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
 }
@@ -108,10 +111,10 @@ footer {
 }
 a
 {
-	color: #000;
+  color: #000;
 }
 #navi:hover {
-	font-weight: bold;
+  font-weight: bold;
 }
 .exptable tr:nth-child(even){background-color: #f2f2f2;}
 
@@ -120,12 +123,12 @@ a
     color: black;
 }
 .btn {
-	font-weight: bold;
+  font-weight: bold;
 }
 .datedisplay {
-	background: #81BEF7;
-	margin-top: 5px; 
-	margin-bottom: 5px; 
+  background: #81BEF7;
+  margin-top: 5px; 
+  margin-bottom: 5px; 
 }
 .dropbtn {
   background-color: #166cb7;
@@ -179,18 +182,18 @@ a
     text-overflow: ellipsis;
     white-space: nowrap;
     background-color: #166cb7;
-	border-color: #166cb7;
-	border-radius: 50px;
-	color: #e5e8e6;
-	font-weight: bold;
-	font-size: 1.5em;
+  border-color: #166cb7;
+  border-radius: 50px;
+  color: #e5e8e6;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 
 .text
 {
-	font-weight: bold;
-	font-size: 1.7em;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 
 .modal-dialog {
@@ -199,7 +202,7 @@ a
  
 .modal-header {
     background-color: #166cb7;
-	padding:16px 16px;
+  padding:16px 16px;
     color:#FFF;
     border-bottom:2px dashed #166cb7;
  }

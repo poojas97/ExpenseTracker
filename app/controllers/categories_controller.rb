@@ -20,8 +20,7 @@ class CategoriesController < ApplicationController
       redirect_to category_path(@items),flash: {success: "category is added successfully" }
     else
       # redirect_to controller: 'expenses', action: 'new_release' 
-      # $("#modal-window").html("<%= escape_javascript(render 'expenses/new_release') %>");
-      
+  
       # render partial:'expenses/new_release'
       #     respond_to do |format|
       #   format.js { render 'create.js.erb' }
@@ -29,12 +28,13 @@ class CategoriesController < ApplicationController
 
     end
   end
+  
   def edit
 
   end
 
   def update
-    # check for rescuing from the params id
+
     if @items.update(category_params)   
       redirect_to category_path(@items), flash: {success: "Category name is updated successfully" }
     else
@@ -53,9 +53,7 @@ class CategoriesController < ApplicationController
   def show
     
   end
-  def set_value
-    
-  end
+
   def validate_same_user
     @category = Category.find(params[:id])
     redirect_to root_path, flash: {danger: "You can only delete your categories" } if current_user != @category.user

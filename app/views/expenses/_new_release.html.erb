@@ -1,8 +1,12 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
       <div class="modal-header">
+
          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
          <h3 id="myModalLabel">Add a category</h3>
+          <div id="error_explanation" style="display:none;">
+                </div>
+
       </div>
         <div class="modal-body">
          <%= form_for(Category.new, :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>

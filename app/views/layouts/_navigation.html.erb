@@ -18,20 +18,7 @@
          <% if logged_in? %>
         <li class="navi"> <%= link_to "Add an expense", new_expense_path, id: "navi" %></li>
         
-        <!-- <li><a href="#" id= "navi">Link</a></li> -->
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id= "navi">Report<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Today", expenses_path%></li>
-            <li><%= link_to "This month",expenses_month_path %></li>
-            <li><%= link_to "This year",expenses_year_path %></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+       
         <% end %>
         <% if logged_in? %>
         <li class="dropdown">
@@ -48,15 +35,8 @@
         </li>
         <% end %>
       </ul>
-      <!-- <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>-->
       <ul class="nav navbar-nav navbar-right"> 
         <% if logged_in? %>
-        <!-- <li><a href="#" id= "navi">Link</a></li> -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id = "navi"><%= current_user.name %><span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -76,6 +56,6 @@
 
 
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
