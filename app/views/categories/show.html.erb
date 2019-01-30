@@ -1,5 +1,5 @@
 <h1 align="center"> Showing the category</h1>
-  <h1 align = "center"><%= @items.name %></h1>
+  <h1 align = "center"><%= @item.name %></h1>
   <div align = "center" class ="well">
     <div>
       <div class="expenselist">
@@ -10,16 +10,12 @@
                   <th class= "headdef">Amount</th>
                   <th class= "headdef">Date</th>  
                 </tr>
-                <% @sum = 0 %>
-      <% @c = Expense.where(category_id: params[:id], user_id: current_user) %>
-      <% @c.each do |t| %>
-      <tr>
+                <tr>
                     <td class="tdname"><%= t.name %></td>
                     <td class="tdamt"><%= t. amount %></td>
                     <td class="tdamt"> <%=t.date.to_s(:short) %></td>
-                    <% @sum = @sum + t.amount %>
-                  </tr>
-      <% end %>
+                </tr>
+    
     </table>
     <div class ="well total"> 
             <p>Total expenditure in <%= @category.name %> : <%= @sum %> </p>

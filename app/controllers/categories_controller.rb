@@ -9,40 +9,43 @@ class CategoriesController < ApplicationController
   
   
   def new
-    @items = current_user.categories.new
+    @item = current_user.categories.new
+    respond_to do |format|
+      format.html {render 'expenses/new_release'}
+      format.js   {render 'expenses/new_release.js.erb'}
+    end
+
   end
 
   def create
 
-    @items = current_user.categories.new(category_params)
-    @items.user = current_user
-    if  @items.save
-      redirect_to category_path(@items),flash: {success: "category is added successfully" }
-    else
-      # redirect_to controller: 'expenses', action: 'new_release' 
-  
-      # render partial:'expenses/new_release'
-      #     respond_to do |format|
-      #   format.js { render 'create.js.erb' }
-      # end
-
+    @item = current_user.categories.new(category_params)
+    @item.user = current_user
+    respond_to do |format|
+      if @item.save
+        format.js {render 'success.js.erb'}
+        # format.js { render json: { success:  true, message: "category created" } }    
+      else 
+       format.js { render 'error.js.erb' }
+      end
     end
   end
-  
+
   def edit
 
   end
 
   def update
 
-    if @items.update(category_params)   
-      redirect_to category_path(@items), flash: {success: "Category name is updated successfully" }
+    if @item.update(category_params)   
+      redirect_to category_path(@item), flash: {success: "Category name is updated successfully" }
     else
           render 'edit'
     end
   end
+
   def destroy
-    if @items.destroy
+    if @item.destroy
       redirect_to categories_path, flash: {danger: "Category was deleted" }
     else
       redirect_to expenses_path, flash: {danger: "Something went wrong" }
@@ -51,14 +54,21 @@ class CategoriesController < ApplicationController
   
 
   def show
-    
+    sum 
+  end
+  def sum
+    @sum = 0
+    @c = Expense.where(category_id: params[:id], user_id: current_user) 
+      @c.each do |t|  
+      @sum = @sum + t.amount
+    end
   end
 
   def validate_same_user
     @category = Category.find(params[:id])
-    redirect_to root_path, flash: {danger: "You can only delete your categories" } if current_user != @category.user
-    
+    redirect_to root_path, flash: {danger: "You can only delete your categories" } if current_user != @category.user 
   end
+  
   def scoper 
     "categories"
   end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :expenses
   resources :recurring_expenses
   resources :categories
+  post "/categories/create" => 'categories#create'
   get 'signup', to: 'users#new' 
   resources :users, except: [:new]
   get 'login', to:'sessions#new'

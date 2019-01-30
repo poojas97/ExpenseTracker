@@ -1,0 +1,10 @@
+$("#errors_div").html("<%= #{@item.name} %>");
+$('#errors_div').modal('show');
+
+
+
+
+
+
+
+

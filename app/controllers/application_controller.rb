@@ -18,19 +18,7 @@ class ApplicationController < ActionController::Base
   end
  
   def scope
-    @items = current_user.send(scoper).find(params[:id])
+    @item = current_user.send(scoper).find(params[:id])
   end
-
-
-  # def notify
-  #   @rec = RecurringExpense.all
-  #   @rec.each do |d|
-  #     if d.reminder_date == Date.today
-  #       # redirect_to new_expense_path
-  #       flash[:alert] = "add the expense #{d.name}"
-
-  #     end
-  #   end
-  # end
 
 end

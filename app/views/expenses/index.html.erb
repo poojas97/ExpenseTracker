@@ -1,9 +1,43 @@
 <%= render 'expense', obj: @expenses %>
   
   <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- 
+   </div>
+   <div class= "btn btn-primary" "> 
+      <%= link_to 'Add Category', new_category_path,  {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+      <br/>
+     
   </div>
+  
+  <!--  <%= link_to 'new cat', '#new-category-modal', 'data-toggle' => "modal" %> -->
 
-  <div class= "btn btn-primary" "> 
-      <%= link_to 'Add Category', new_release_path,  {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
-  </div>
+  <!-- <div id='new-category-modal' class='modal fade'>
+  	<div class="modal-dialog" role="document">
+  <div class="modal-content">
+
+            <div class = "modal-header">
+            	 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+         <h3 id="myModalLabel">Add a category</h3>
+                <div id="error_explanation" style="display:none;">
+                </div>
+            </div>
+
+            <div class = "modal-body">
+
+                <%= form_for(Category.new, remote:true, html: {"data-type" => :json}) do |f| %>
+
+                    <%= f.label :name %>
+                    <%= f.text_field :name %>
+
+                   
+
+            </div>
+
+            <div class = "modal-footer">
+
+                    <%= f.submit "Add category", class: "btn btn-large btn-primary" %>
+            </div>
+</div>
+</div>
+                <% end %>
+
+</div> -->

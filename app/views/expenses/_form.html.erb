@@ -1,7 +1,7 @@
-<%= render 'shared/errors', obj: @items %>
+<%= render 'shared/errors', obj: @item %>
 <div class = "row">
   <div class="col-xs-12">
-    <%= form_for( @items , :authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <%= form_for( @item , remote: true,:authenticity_token => true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
   
       <div class="form-group">
         <div class = "col-sm-2 control-label">
@@ -48,3 +48,5 @@
     <% end %>
   </div>
 </div>
+
+

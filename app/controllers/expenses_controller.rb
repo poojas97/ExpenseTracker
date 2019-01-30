@@ -1,5 +1,4 @@
 class ExpensesController < ApplicationController
-  # before_action :notify
   before_action :validate_user
   before_action :validate_same_user, only: [:edit, :update, :destroy, :show]
   before_action :scope , only: [:edit, :show, :update, :destroy]
@@ -9,18 +8,18 @@ class ExpensesController < ApplicationController
     @expenses = Expense.where(date: Date.today, user_id: current_user)
   end
   def new
-    @items = current_user.expenses.new
+    @item = current_user.expenses.new
     @resources = current_user.categories.new
   end
   def edit
     
   end
   def create
-    @items = current_user.expenses.new(expense_params)
-    @items.user = current_user
+    @item = current_user.expenses.new(expense_params)
+    @item.user = current_user
     
-    if @items.save
-        redirect_to expense_path(@items), flash: { success: "Expense is added successfully"} 
+    if @item.save
+        redirect_to expense_path(@item), flash: { success: "Expense is added successfully"} 
     else
          render action: :new
     end
@@ -33,28 +32,20 @@ class ExpensesController < ApplicationController
  
   def update
     
-      if @items.update(expense_params)
-        redirect_to expense_path(@items), flash: {success: "Expense is updated successfully" }
+      if @item.update(expense_params)
+        redirect_to expense_path(@item), flash: {success: "Expense is updated successfully" }
       else
         render 'edit'
       end
   end
 
   def destroy
-    if @items.destroy
+    if @item.destroy
       redirect_to expenses_path, flash: {success: "Expense was deleted" }
     else
       redirect_to expenses_path, flash: {danger: "Something went wrong" }
     end
   end
-
-  # def month
-  #   @expenses = Expense.where("date > ? AND date < ? AND user_id = ?", Time.now.beginning_of_month, Time.now.end_of_month, current_user)
-  # end
-  # def year
-  #   @expenses = Expense.where("date > ? AND date < ? AND user_id = ?", Time.now.beginning_of_year, Time.now.end_of_year, current_user)
-  # end
-  
   
   def scoper 
     "expenses"
@@ -91,11 +82,12 @@ class ExpensesController < ApplicationController
           end
       end
       sum #calling the action sum to find the sum of expenses in the duration
-    respond_to do |format|
-      format.html
-      format.js       
-    end  
+      respond_to do |format|
+        format.html
+        format.js       
+      end  
   end
+
   def sum
     @sum = 0
       @expense_with_duration.each do |f|
@@ -105,8 +97,8 @@ class ExpensesController < ApplicationController
 
 
   def validate_same_user
-    @items = Expense.find(params[:id])
-    redirect_to root_path, flash: {danger: "You can only delete or update your expenses" } if current_user != @items.user
+    @item = Expense.find(params[:id])
+    redirect_to root_path, flash: {danger: "You can only delete or update your expenses" } if current_user != @item.user
   end
 
 
