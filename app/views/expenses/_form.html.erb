@@ -31,10 +31,15 @@
         <div class = "col-sm-2 control-label">
         <%= f.label :Category %>
         </div>
-        <div class="col-sm-8">
-            <% @categories= Category.where(user_id: current_user) %>
-            <%= f.collection_select(:category_id, @categories , :id , :name , {id: "Category"})%>
-        </div>
+         <% @categories= Category.where(user_id: current_user) %>
+          <% if @categories.empty? %>
+            <h4> Please create a category</h4>
+          <% else %>
+            <div class="col-sm-8">
+               
+                <%= f.collection_select(:category_id, @categories , :id , :name , {id: "Category"})%>
+            </div>
+          <%end %>
       </div>
      
       <div class="form-group">

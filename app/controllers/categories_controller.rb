@@ -8,21 +8,37 @@ class CategoriesController < ApplicationController
   end
   
   
-  def new
-    @item = current_user.categories.new
-  end
+  # def new
+  #   @item = current_user.categories.new
+  #   respond_to do |format|
+  #     format.html {render 'expenses/new_category'}
+  #     format.js   {render 'expenses/new_category.js.erb'}
+  #   end
 
-  def create
-  
-    @item = current_user.categories.new(name: params[:name])
-    @item.user = current_user
-    respond_to do |format|
-      if @item.save
-         format.json { render json: { success:  true, message: "category created" } }    
-      else 
-         format.json { render json: { success:  false, message: @item.errors.full_messages } }
-      end
-    end
+  # end
+
+  def create 
+        @flag = 0
+        @categories_present = current_user.categories.pluck(:name)
+        @item = current_user.categories.new(name: params[:name])
+        @item.user = current_user
+        @categories_present.each do |c|
+              if c == @item.name
+                    @flag= 1
+                    break
+              end
+        end
+          respond_to do |format|
+
+              if @flag == 1
+                  format.json { render json: { success:  false, message: "Category is already present" } }
+              elsif @item.save
+                       format.json { render json: { success:  true, message: "category created" } }    
+              else 
+                       format.json { render json: { success:  false, message: @item.errors.full_messages } }
+              end
+                  
+          end
   end
 
   def edit
