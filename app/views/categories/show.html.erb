@@ -10,19 +10,21 @@
                   <th class= "headdef">Amount</th>
                   <th class= "headdef">Date</th>  
                 </tr>
+                
+                <% @c.each do |t| %>
                 <tr>
                     <td class="tdname"><%= t.name %></td>
-                    <td class="tdamt"><%= t. amount %></td>
+                    <td class="tdamt"><%= t.amount %></td>
                     <td class="tdamt"> <%=t.date.to_s(:short) %></td>
                 </tr>
-    
+    <% end %>
     </table>
     <div class ="well total"> 
             <p>Total expenditure in <%= @category.name %> : <%= @sum %> </p>
     </div>
     </div>
     <div class="expense-actions">
-  
+       <%= link_to "Edit category name", edit_category_path(@item), class: "btn btn-xs btn-primary" %>
       <%= link_to "Delete", category_path(@category), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %>
       <%= link_to "Back", expenses_path, class: "btn btn-xs btn-success" %>
     </div>

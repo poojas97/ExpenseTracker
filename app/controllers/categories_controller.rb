@@ -10,23 +10,17 @@ class CategoriesController < ApplicationController
   
   def new
     @item = current_user.categories.new
-    respond_to do |format|
-      format.html {render 'expenses/new_release'}
-      format.js   {render 'expenses/new_release.js.erb'}
-    end
-
   end
 
   def create
-
-    @item = current_user.categories.new(category_params)
+  
+    @item = current_user.categories.new(name: params[:name])
     @item.user = current_user
     respond_to do |format|
       if @item.save
-        format.js {render 'success.js.erb'}
-        # format.js { render json: { success:  true, message: "category created" } }    
+         format.json { render json: { success:  true, message: "category created" } }    
       else 
-       format.js { render 'error.js.erb' }
+         format.json { render json: { success:  false, message: @item.errors.full_messages } }
       end
     end
   end

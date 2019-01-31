@@ -29,7 +29,7 @@
             <li><%= link_to "#{category.name}", category_path(category) %></li>
             <% end %>
             <li role="separator" class="divider"></li>
-            <li><%= link_to "Create New Category", new_category_path %></li>
+              <li><%= link_to 'Create new Category',  {'data-toggle' =>  "modal", 'data-target' => '#modal-window'},id: "the_category"%></li>
           </ul>
         </li>
         <% end %>
@@ -43,7 +43,7 @@
             <li><%= link_to "View your profile", user_path(current_user) %></li>
 
 
-            <li><a href="#">Something else here</a></li>
+           
             <li role="separator" class="divider"></li>
             <li><%= link_to 'Log out', logout_path, method: :delete %></li>
           </ul>

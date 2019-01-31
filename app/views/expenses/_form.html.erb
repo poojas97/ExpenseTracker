@@ -5,7 +5,7 @@
   
       <div class="form-group">
         <div class = "col-sm-2 control-label">
-          <%= f.label :expense_name %>
+          <%= f.label :Expense_name %>
         </div>
         <div class="col-sm-8">
           <%= f.text_field :name, class: "form-control",placeholder: "Enter the expense name" %>
@@ -13,7 +13,7 @@
       </div>
       <div class="form-group">
         <div class = "col-sm-2 control-label">
-          <%= f.label :amount %>    
+          <%= f.label :Amount %>    
         </div>
         <div class="col-sm-8">
           <%= f.text_field :amount,class: "form-control", placeholder: "Enter the amount spent"%>
@@ -33,7 +33,7 @@
         </div>
         <div class="col-sm-8">
             <% @categories= Category.where(user_id: current_user) %>
-            <%= f.collection_select(:category_id, @categories , :id , :name , {class: "dropdown-menu"})%>
+            <%= f.collection_select(:category_id, @categories , :id , :name , {id: "Category"})%>
         </div>
       </div>
      
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="col-xs-4 col-xs-offset-4" align="center">
-        [<%=  link_to "Back", expenses_path %>]
+        <%=  link_to "Back", expenses_path, class: "btn btn-primary" %>
       </div> 
     <% end %>
   </div>
