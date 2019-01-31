@@ -2,6 +2,9 @@
   <h1 align = "center"><%= @item.name %></h1>
   <div align = "center" class ="well">
     <div>
+    <% if @c.empty? %>
+    <h4>No expenses made under this category</h4>
+    <% else %>
       <div class="expenselist">
               <table align="center" class ="exptable">  
 
@@ -23,6 +26,7 @@
             <p>Total expenditure in <%= @category.name %> : <%= @sum %> </p>
     </div>
     </div>
+    <% end %>
     <div class="expense-actions">
        <%= link_to "Edit category name", edit_category_path(@item), class: "btn btn-xs btn-primary" %>
       <%= link_to "Delete", category_path(@category), method: :delete, data: { confirm: "Are you sure you want to delete the expense?"}, class: "btn btn-xs btn-danger" %>
