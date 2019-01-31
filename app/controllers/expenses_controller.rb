@@ -9,7 +9,6 @@ class ExpensesController < ApplicationController
   end
   def new
     @item = current_user.expenses.new
-    @resources = current_user.categories.new
   end
   def edit
     
@@ -21,7 +20,7 @@ class ExpensesController < ApplicationController
     if @item.save
         redirect_to expense_path(@item), flash: { success: "Expense is added successfully"} 
     else
-         render action: :new
+         render 'new'
     end
   end
 
@@ -50,12 +49,7 @@ class ExpensesController < ApplicationController
   def scoper 
     "expenses"
   end
-  def new_release
-    respond_to do |format|
-      format.html
-      format.js  
-    end
-  end
+  
 
   def update_expense_list
       if params[:c_name] != "0"

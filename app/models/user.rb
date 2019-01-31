@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :expenses
   has_many :categories
-  has_many :recurring_expenses
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: {minimum: 3, maximum: 50}
   before_save { self.email = email.downcase }
   
