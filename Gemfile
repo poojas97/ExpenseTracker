@@ -42,7 +42,7 @@ gem 'validates_timeliness', '~> 5.0.0.alpha3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap-sass', '~> 3.4.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.0.0'
 
 group :development, :test do
